@@ -6,6 +6,7 @@ Top level script. Calls other functions that generate datasets that this script 
 """
 import argparse
 import logging
+from os import environ
 from os.path import join
 
 from hdx.hdx_configuration import Configuration
@@ -47,8 +48,13 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=lookup)
     parser.add_argument('-hk', '--hdx_key', default=None, help='HDX api key')
     parser.add_argument('-hs', '--hdx_site', default=None, help='HDX site to use')
+    parser.add_argument('-s', '--start', default='RESET', help='ISO3 to start. Defaults to starting from beginning.')
     args = parser.parse_args()
     hdx_site = args.hdx_site
     if hdx_site is None:
         hdx_site = 'stage'
+    start = args.start
+    if start != 'RESET':
+        start = f'iso3={start}'
+    environ['WHERETOSTART'] = start
     facade(main, hdx_key=args.hdx_key, hdx_site=hdx_site, user_agent=lookup, project_config_yaml=join('config', 'project_configuration.yml'))
