@@ -1,0 +1,6 @@
+notes: "Produced and maintained since 2017, the geoBoundaries Global Database of Political Administrative Boundaries Database [www.geoboundaries.org](https://www.geoboundaries.org) is an open license, standardized resource of boundaries (i.e., state, county) for every country in the world.  "
+license_id: "hdx-odc-odbl"
+caveats: "[Acknowledgement](https://www.geoboundaries.org/index.html#citation) of the geoBoundaries project is required for the use of this data."
+methodology: "Other"
+methodology_other: "All stages of data collection and processing are publicly available, as described in both [peer-reviewed academic outlets](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0231866) and in the public code base available through [GitHub](https://github.com/wmgeolab/geoBoundaries)."
+private: False  # has to be True or False
