@@ -23,9 +23,14 @@ logger = logging.getLogger(__name__)
 def get_data(downloader, url):
     downloader.download(url)
     admin_boundaries = dict()
+    ignored_countries = set()
     for boundaryinfo in downloader.get_json():
+        if boundaryinfo['worldBankIncomeGroup'] == 'High-income Countries':
+            ignored_countries.add(boundaryinfo['boundaryName'])
+            continue
         countryiso3 = boundaryinfo['boundaryISO']
         dict_of_lists_add(admin_boundaries, countryiso3, boundaryinfo)
+    logger.info(f'Ignoring high income countries: {", ".join(sorted(ignored_countries))}')
     return admin_boundaries
 
 
@@ -71,7 +76,10 @@ def generate_dataset(countryiso3, admin_boundaries):
         resource_names.append(name)
         dataset.add_update_resource(resource)
 
+    all_hdx = True
     for admin_boundary in sorted(admin_boundaries, key=lambda x: x['boundaryType']):
+        if 'data.humdata.org' not in admin_boundary['boundarySourceURL']:
+            all_hdx = False
         dataset_years.add(admin_boundary['boundaryYearRepresented'].replace('.0', ''))
         i = 1
         while True:
@@ -86,7 +94,9 @@ def generate_dataset(countryiso3, admin_boundaries):
         add_resource('tjDownloadURL', f'TopoJSON {boundarytype} boundaries for {countryname}')
         add_resource('downloadURL', f'Other formats including shape file {boundarytype} boundaries for {countryname}',
                      'shp')
-
+    if all_hdx:
+        logger.info(f'Ignoring {countryname} as data for all admin levels comes from HDX!')
+        return None, None
     dataset_years = sorted(dataset_years)
     dataset.set_dataset_year_range(dataset_years[0], dataset_years[-1])
     dataset['dataset_source'] = ', '.join(sorted(sources))
