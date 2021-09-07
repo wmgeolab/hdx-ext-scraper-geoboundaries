@@ -25,12 +25,12 @@ def get_data(downloader, url):
     admin_boundaries = dict()
     ignored_countries = set()
     for boundaryinfo in downloader.get_json():
-        if boundaryinfo['worldBankIncomeGroup'] == 'High-income Countries':
+        if boundaryinfo['worldBankIncomeGroup'] in ('High-income Countries', 'No income group available'):
             ignored_countries.add(boundaryinfo['boundaryName'])
             continue
         countryiso3 = boundaryinfo['boundaryISO']
         dict_of_lists_add(admin_boundaries, countryiso3, boundaryinfo)
-    logger.info(f'Ignoring high income countries: {", ".join(sorted(ignored_countries))}')
+    logger.info(f'Ignoring high income/no income available countries: {", ".join(sorted(ignored_countries))}')
     return admin_boundaries
 
 
