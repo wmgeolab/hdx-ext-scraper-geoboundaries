@@ -62,7 +62,8 @@ class TestGeoBoundaries:
         assert admin_boundaries == {"AFG": alljson}
 
     def test_generate_dataset(self, configuration):
-        dataset, resource_names = generate_dataset("AFG", alljson)
+        boundarytypes, dataset, resource_names = generate_dataset("AFG", alljson)
+        assert boundarytypes == ['ADM0', 'ADM1', 'ADM2']
         assert dataset == {
             "name": "geoboundaries-admin-boundaries-for-afghanistan",
             "title": "Afghanistan - Subnational Administrative Boundaries",
