@@ -31,11 +31,12 @@ def main():
         for info, country in progress_storing_tempdir(lookup, countries, "iso3"):
             countryiso3 = country["iso3"]
             country_admin_boundaries = admin_boundaries[countryiso3]
-            dataset, resource_names = generate_dataset(
+            boundarytypes, dataset, resource_names = generate_dataset(
                 countryiso3, country_admin_boundaries
             )
             if dataset:
                 dataset.update_from_yaml()
+                dataset["notes"] = f"This dataset contains the following administrative boundaries: {', '.join(boundarytypes)}.  \n  \n{dataset['notes']}"
                 dataset.create_in_hdx(
                     remove_additional_resources=True,
                     hxl_update=False,

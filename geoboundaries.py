@@ -53,7 +53,7 @@ def generate_dataset(countryiso3, admin_boundaries):
         dataset.add_country_location(countryiso3)
     except HDXError as e:
         logger.error(f"{title} has a problem! {e}")
-        return None, None
+        return None, None, None
     dataset.set_maintainer("6e0ed1f7-11df-4072-b2df-1c52527faae8")
     dataset.set_organization("8be95204-f453-4b66-a4f6-dbe84cb0bdee")
     dataset.set_expected_update_frequency("Live")
@@ -72,6 +72,7 @@ def generate_dataset(countryiso3, admin_boundaries):
         dataset.add_update_resource(resource)
 
     all_hdx = True
+    boundarytypes = list()
     for admin_boundary in sorted(admin_boundaries, key=lambda x: x["boundaryType"]):
         if "data.humdata.org" not in admin_boundary["boundarySourceURL"]:
             all_hdx = False
@@ -84,6 +85,7 @@ def generate_dataset(countryiso3, admin_boundaries):
             sources.add(source)
             i += 1
         boundarytype = admin_boundary["boundaryType"]
+        boundarytypes.append(boundarytype)
         add_resource(
             "simplifiedGeometryGeoJSON",
             f"Simplified GeoJSON {boundarytype} boundaries for {countryname}",
@@ -103,8 +105,8 @@ def generate_dataset(countryiso3, admin_boundaries):
         logger.info(
             f"Ignoring {countryname} as data for all admin levels comes from HDX!"
         )
-        return None, None
+        return None, None, None
     dataset_years = sorted(dataset_years)
     dataset.set_dataset_year_range(dataset_years[0], dataset_years[-1])
     dataset["dataset_source"] = ", ".join(sorted(sources))
-    return dataset, resource_names
+    return boundarytypes, dataset, resource_names
