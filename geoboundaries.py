@@ -54,7 +54,7 @@ def generate_dataset(countryiso3, admin_boundaries):
     except HDXError as e:
         logger.error(f"{title} has a problem! {e}")
         return None, None, None
-    dataset.set_maintainer("6e0ed1f7-11df-4072-b2df-1c52527faae8")
+    dataset.set_maintainer("0ec5ff66-dc01-4087-bb82-1d01f3b1c1ce")
     dataset.set_organization("8be95204-f453-4b66-a4f6-dbe84cb0bdee")
     dataset.set_expected_update_frequency("Live")
     dataset.set_subnational(True)

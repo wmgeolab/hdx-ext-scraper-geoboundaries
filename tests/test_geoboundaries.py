@@ -68,7 +68,7 @@ class TestGeoBoundaries:
             "name": "geoboundaries-admin-boundaries-for-afghanistan",
             "title": "Afghanistan - Subnational Administrative Boundaries",
             "groups": [{"name": "afg"}],
-            "maintainer": "6e0ed1f7-11df-4072-b2df-1c52527faae8",
+            "maintainer": "0ec5ff66-dc01-4087-bb82-1d01f3b1c1ce",
             "owner_org": "8be95204-f453-4b66-a4f6-dbe84cb0bdee",
             "data_update_frequency": "0",
             "subnational": "1",
