@@ -6,4 +6,4 @@ This script connects to the [geoBoundaries API](https://www.geoboundaries.org/ap
 
 ### Usage
 
-    python run.py --hdx_key=YOUR KEY
+    python run.py --hdx_key=YOUR KEY --hdx_site=PRODUCTION OR TEST SITE (prod, stage)
