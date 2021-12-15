@@ -18,6 +18,9 @@ from hdx.utilities.path import progress_storing_tempdir
 from geoboundaries import generate_dataset, get_data
 
 print("Running")
+hdxKey = str(sys.argv[0])
+print("hdxKey loaded")
+print(len(hdxKey))
 sys.exit()
 
 logger = logging.getLogger(__name__)
