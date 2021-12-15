@@ -8,12 +8,17 @@ import logging
 from os import environ
 from os.path import join
 
+import sys
+
 from hdx.facades.simple import facade
 from hdx.hdx_configuration import Configuration
 from hdx.utilities.downloader import Download
 from hdx.utilities.path import progress_storing_tempdir
 
 from geoboundaries import generate_dataset, get_data
+
+print("Running")
+sys.exit()
 
 logger = logging.getLogger(__name__)
 
