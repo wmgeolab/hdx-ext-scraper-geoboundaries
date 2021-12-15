@@ -19,5 +19,5 @@ jobs:
         if [ -f test-requirements.txt ]; then pip install  --upgrade -r requirements.txt; fi
     - name: Push to HDX
       run: |
-        python run.py ${{secrets.HDXKEY}}
+        python run.py --hdx_key=${{secrets.HDXKEY}} 
             
