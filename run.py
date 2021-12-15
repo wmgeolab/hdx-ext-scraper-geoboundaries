@@ -74,6 +74,8 @@ if __name__ == "__main__":
     if start != "RESET":
         start = f"iso3={start}"
     environ["WHERETOSTART"] = start
+    print(args.hdx_key)
+    print(len(args.hdx_key))
     facade(
         main,
         hdx_key=args.hdx_key,
