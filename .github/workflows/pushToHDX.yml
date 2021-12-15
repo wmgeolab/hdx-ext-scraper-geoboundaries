@@ -1,4 +1,4 @@
-name: build
+name: pushToHDX
 
 on: workflow_dispatch
 
