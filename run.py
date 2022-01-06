@@ -69,7 +69,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     hdx_site = args.hdx_site
     if hdx_site is None:
-        hdx_site = "stage"
+        hdx_site = "prod"
     start = args.start
     if start != "RESET":
         start = f"iso3={start}"
