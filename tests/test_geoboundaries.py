@@ -6,13 +6,12 @@ Unit tests for cods.
 from os.path import join
 
 import pytest
+from geoboundaries import generate_dataset, get_data
+from hdx.api.configuration import Configuration
+from hdx.api.locations import Locations
 from hdx.data.vocabulary import Vocabulary
-from hdx.hdx_configuration import Configuration
-from hdx.hdx_locations import Locations
 from hdx.location.country import Country
 from hdx.utilities.loader import load_json
-
-from geoboundaries import generate_dataset, get_data
 
 alljson = load_json(join("tests", "fixtures", "apiinput.json"))
 
@@ -63,7 +62,7 @@ class TestGeoBoundaries:
 
     def test_generate_dataset(self, configuration):
         boundarytypes, dataset, resource_names = generate_dataset("AFG", alljson)
-        assert boundarytypes == ['ADM0', 'ADM1', 'ADM2']
+        assert boundarytypes == ["ADM0", "ADM1", "ADM2"]
         assert dataset == {
             "name": "geoboundaries-admin-boundaries-for-afghanistan",
             "title": "Afghanistan - Subnational Administrative Boundaries",

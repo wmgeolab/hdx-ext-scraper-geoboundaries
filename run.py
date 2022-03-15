@@ -8,14 +8,13 @@ import logging
 from os import environ
 from os.path import join
 
-import sys
 
-from hdx.facades.simple import facade
-from hdx.hdx_configuration import Configuration
-from hdx.utilities.downloader import Download
-from hdx.utilities.path import progress_storing_tempdir
 
 from geoboundaries import generate_dataset, get_data
+from hdx.api.configuration import Configuration
+from hdx.facades.simple import facade
+from hdx.utilities.downloader import Download
+from hdx.utilities.path import progress_storing_tempdir
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +37,9 @@ def main():
             )
             if dataset:
                 dataset.update_from_yaml()
-                dataset["notes"] = f"This dataset contains the following administrative boundaries: {', '.join(boundarytypes)}.  \n  \n{dataset['notes']}"
+                dataset[
+                    "notes"
+                ] = f"This dataset contains the following administrative boundaries: {', '.join(boundarytypes)}.  \n  \n{dataset['notes']}"
                 dataset.create_in_hdx(
                     remove_additional_resources=True,
                     hxl_update=False,
