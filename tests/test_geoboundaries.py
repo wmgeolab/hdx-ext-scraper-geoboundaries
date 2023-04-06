@@ -34,7 +34,7 @@ class TestGeoBoundaries:
         Vocabulary._tags_dict = True
         Vocabulary._approved_vocabulary = {
             "tags": [
-                {"name": "administrative divisions"},
+                {"name": "administrative boundaries-divisions"},
                 {"name": "geodata"},
                 {"name": "gazetteer"},
             ],
@@ -73,7 +73,7 @@ class TestGeoBoundaries:
             "subnational": "1",
             "tags": [
                 {
-                    "name": "administrative divisions",
+                    "name": "administrative boundaries-divisions",
                     "vocabulary_id": "4e61d464-4943-4e97-973a-84673c1aaa87",
                 },
                 {
