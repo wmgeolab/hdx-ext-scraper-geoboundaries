@@ -97,7 +97,7 @@ def generate_dataset(countryiso3, admin_boundaries):
             "tjDownloadURL", f"TopoJSON {boundarytype} boundaries for {countryname}"
         )
         add_resource(
-            "downloadURL",
+            "staticDownloadLink",
             f"Other formats including shape file {boundarytype} boundaries for {countryname}",
             "shp",
         )
