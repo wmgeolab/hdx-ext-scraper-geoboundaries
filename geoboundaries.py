@@ -79,7 +79,7 @@ def generate_dataset(countryiso3, admin_boundaries):
         dataset_years.add(admin_boundary["boundaryYearRepresented"].replace(".0", ""))
         i = 1
         while True:
-            source = admin_boundary.get(f"boundarySource-{i}")
+            source = admin_boundary.get(f"boundarySource")
             if source is None:
                 break
             sources.add(source)
@@ -109,8 +109,8 @@ def generate_dataset(countryiso3, admin_boundaries):
         return None, None, None
     dataset_years = sorted(dataset_years)
     dataset.set_reference_period_year_range(dataset_years[0], dataset_years[-1])
-    dataset["dataset_source"] = ", ".join(sorted(sources))
+    dataset["dataset_source"] = "".join(sorted(sources))
     logger.info(
-        f'checking sources: {", ".join(sorted(sources))}'
+        f'checking sources: {"".join(sorted(sources))}'
     )
     return boundarytypes, dataset, resource_names
