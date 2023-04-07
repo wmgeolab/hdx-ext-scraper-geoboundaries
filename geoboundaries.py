@@ -84,6 +84,7 @@ def generate_dataset(countryiso3, admin_boundaries):
                 break
             sources.add(source)
             i += 1
+        logger.info(f"printing dataset sources: {sources}")
         boundarytype = admin_boundary["boundaryType"]
         boundarytypes.append(boundarytype)
         add_resource(
