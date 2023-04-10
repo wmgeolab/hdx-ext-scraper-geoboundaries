@@ -84,7 +84,7 @@ def generate_dataset(countryiso3, admin_boundaries):
         source = admin_boundary["boundarySource"]
         logger.info(f"printing dataset sources: {sources}")
         boundarytype = admin_boundary["boundaryType"]
-        logger.info(f"Admin Boundary Type: {boundaryType}")
+        logger.info(f"Admin Boundary Type: {boundarytype}")
         boundarytypes.append(boundarytype)
         add_resource(
             "simplifiedGeometryGeoJSON",
