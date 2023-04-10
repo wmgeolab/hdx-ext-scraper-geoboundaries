@@ -74,6 +74,7 @@ def generate_dataset(countryiso3, admin_boundaries):
 
     all_hdx = True
     boundarytypes = list()
+    logger.info(f"Entered into resource method: {dataset}")
     for admin_boundary in sorted(admin_boundaries, key=lambda x: x["boundaryType"]):
         if "data.humdata.org" not in admin_boundary["boundarySourceURL"]:
             all_hdx = False
