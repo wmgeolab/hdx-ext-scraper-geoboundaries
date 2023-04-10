@@ -59,7 +59,8 @@ def generate_dataset(countryiso3, admin_boundaries):
     dataset.set_expected_update_frequency("Live")
     dataset.set_subnational(True)
     dataset.add_tags(["administrative boundaries-divisions", "geodata", "gazetteer"])
-
+    logger.info(f"Dataset added: {dataset}")
+    
     sources = set()
     dataset_years = set()
     resource_names = list()
