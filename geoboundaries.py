@@ -80,7 +80,7 @@ def generate_dataset(countryiso3, admin_boundaries):
             all_hdx = False
         dataset_years.add(admin_boundary["boundaryYearRepresented"].replace(".0", ""))
         logger.info(f"Admin Boundary: {admin_boundary}")
-        source = admin_boundary.get("boundarySource")
+        source = admin_boundary["boundarySource"]
         logger.info(f"printing dataset sources: {sources}")
         boundarytype = admin_boundary["boundaryType"]
         boundarytypes.append(boundarytype)
