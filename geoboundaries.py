@@ -79,7 +79,7 @@ def generate_dataset(countryiso3, admin_boundaries):
         if "data.humdata.org" not in admin_boundary["boundarySourceURL"]:
             all_hdx = False
         dataset_years.add(admin_boundary["boundaryYearRepresented"].replace(".0", ""))
-        i = 1
+        logger.info(f"Admin Boundary: {admin_boundary}")
         source = admin_boundary.get("boundarySource")
         logger.info(f"printing dataset sources: {sources}")
         boundarytype = admin_boundary["boundaryType"]
