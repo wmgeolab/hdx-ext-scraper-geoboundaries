@@ -82,7 +82,7 @@ def generate_dataset(countryiso3, admin_boundaries):
         logger.info(f"Printing all_hdx variable: {all_hdx}")
         logger.info(f"Admin Boundary: {admin_boundary}")
         source = admin_boundary["boundarySource"]
-        logger.info(f"printing dataset sources: {sources}")
+        logger.info(f"printing dataset sources: {source}")
         boundarytype = admin_boundary["boundaryType"]
         logger.info(f"Admin Boundary Type: {boundarytype}")
         boundarytypes.append(boundarytype)
