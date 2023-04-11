@@ -61,7 +61,7 @@ def generate_dataset(countryiso3, admin_boundaries):
     dataset.add_tags(["administrative boundaries-divisions", "geodata", "gazetteer"])
     logger.info(f"Dataset added: {dataset}")
     
-    sources = set()
+    sources = list()
     dataset_years = set()
     resource_names = list()
 
