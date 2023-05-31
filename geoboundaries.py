@@ -57,7 +57,6 @@ def generate_dataset(countryiso3, admin_boundaries):
     dataset.set_maintainer("0ec5ff66-dc01-4087-bb82-1d01f3b1c1ce")
     dataset.set_organization("8be95204-f453-4b66-a4f6-dbe84cb0bdee")
     dataset.set_expected_update_frequency("Live")
-    dataset.set_subnational(True)
     dataset.add_tags(["administrative boundaries-divisions", "geodata", "gazetteer"])
     logger.info(f"Dataset added: {dataset}")
     
@@ -107,6 +106,10 @@ def generate_dataset(countryiso3, admin_boundaries):
             f"Ignoring {countryname} as data for all admin levels comes from HDX!"
         )
         return None, None, None
+    if boundarytypes == ["ADM0"]:
+        dataset.set_subnational(False)
+    else:
+        dataset.set_subnational(True)
     dataset_years = sorted(dataset_years)
     dataset.set_reference_period_year_range(dataset_years[0], dataset_years[-1])
     dataset["dataset_source"] = "".join(sorted(sources))
