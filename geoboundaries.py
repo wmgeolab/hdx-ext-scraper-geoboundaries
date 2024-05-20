@@ -116,4 +116,5 @@ def generate_dataset(countryiso3, admin_boundaries):
     logger.info(
         f'checking sources: {"".join(sorted(sources))}'
     )
+    logger.info("Getting Out Of resource Method")
     return boundarytypes, dataset, resource_names
