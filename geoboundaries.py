@@ -112,7 +112,9 @@ def generate_dataset(countryiso3, admin_boundaries):
         dataset.set_subnational(True)
     dataset_years = sorted(dataset_years)
     dataset.set_reference_period_year_range(dataset_years[0], dataset_years[-1])
+    logger.info("CHecking line 1")
     dataset["dataset_source"] = "".join(sorted(sources))
+    logger.info("CHecking line 2")
     logger.info(
         f'checking sources: {"".join(sorted(sources))}'
     )
