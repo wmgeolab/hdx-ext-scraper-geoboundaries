@@ -40,13 +40,16 @@ def main():
                 dataset[
                     "notes"
                 ] = f"This dataset contains the following administrative boundaries: {', '.join(boundarytypes)}.  \n  \n{dataset['notes']}"
+                logger.info(f"Debugging line 1")
                 dataset.create_in_hdx(
                     remove_additional_resources=True,
                     hxl_update=False,
                     updated_by_script="GeoBoundaries",
                     batch=info["batch"],
                 )
+                logger.info(f"Debugging line 2")
                 existing_order = [x["name"] for x in dataset.get_resources()]
+                logger.info(f"Debugging line 3")
                 if existing_order != resource_names:
                     sorted_resources = sorted(
                         dataset.get_resources(),
@@ -55,6 +58,7 @@ def main():
                     dataset.reorder_resources(
                         [x["id"] for x in sorted_resources], hxl_update=False
                     )
+                logger.info(f"Debugging line 4")
 
 
 if __name__ == "__main__":
