@@ -35,6 +35,7 @@ def main():
             boundarytypes, dataset, resource_names = generate_dataset(
                 countryiso3, country_admin_boundaries
             )
+            logger.info("Debugging line 0")
             if dataset:
                 dataset.update_from_yaml()
                 dataset[
@@ -47,9 +48,9 @@ def main():
                     updated_by_script="GeoBoundaries",
                     batch=info["batch"],
                 )
-                logger.info(f"Debugging line 2")
+                logger.info("Debugging line 2")
                 existing_order = [x["name"] for x in dataset.get_resources()]
-                logger.info(f"Debugging line 3")
+                logger.info("Debugging line 3")
                 if existing_order != resource_names:
                     sorted_resources = sorted(
                         dataset.get_resources(),
@@ -58,7 +59,7 @@ def main():
                     dataset.reorder_resources(
                         [x["id"] for x in sorted_resources], hxl_update=False
                     )
-                logger.info(f"Debugging line 4")
+                logger.info("Debugging line 4")
 
 
 if __name__ == "__main__":
